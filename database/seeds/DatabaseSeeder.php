@@ -20,47 +20,59 @@ class DatabaseSeeder extends Seeder
 	    	if(App::environment() === 'production')
 				exit('I just stopped you from being fired. Love Phil');
 
-			$table = array(
-				/**
-				 * user related tables
-				 */
+			/**
+			 * define database tables
+			 *
+			 * @var $table array
+			 */
+
+				$tables = [
+					/**
+					 * user related tables
+					 */
+					
+						'users',
+						'password_resets',
+
+					/**
+					 * forum related table
+					 */
+
+						'tags',
+						'threads',
+						'posts',
+						'comments',
+						'likes',
+
+					/**
+					 * pivot tables
+					 */
+					
+						'comment_post',
+						'thread_post'
 				
-					'users',
-					'password_resets',
+				];
 
-				/**
-				 * forum related table
-				 */
+			/**
+			 * define seeders
+			 *
+			 * @var $seeders array
+			 */
 
-					'tags',
-					'threads',
-					'posts',
-					'comments',
-					'likes',
+				$seeders = [
+					"main_seeders" => [
+						UserTableSeeder::class,
+						// ThreadTableSeeder::class,
+						// PostTableSeeder::class,
+						// CommentTableSeeder::class,
+						// LikeTableSeeder::class
+					],
 
-				/**
-				 * pivot tables
-				 */
-				
-					'comment_post',
-					'thread_post'
-			
-			);
-
-			$seeders = [
-				"main_seeders" => [
-					UsertableSeeder::class,
-					ThreadTableSeeder::class,
-					PostTableSeeder::class,
-					CommentTableSeeder::class,
-					LikeTableSeeder::class
-				],
-
-				"pivot_seeders" => [
-					CommentPostTableSeeder::class,
-					ThreadPostTableSeeder::class
-				]
-			];
+					"pivot_seeders" => [
+						// CommentPostTableSeeder::class,
+						// ThreadPostTableSeeder::class
+					]
+				];
 
 		/**
 		 * we only seeding records to the database on local environments
@@ -92,10 +104,10 @@ class DatabaseSeeder extends Seeder
                     echo "--------------\n";
 
                     foreach($tables as $table){
-                    	echo "truncating: " . $table;
+                    	echo "truncating: " . $table . "\n";
                     	DB::table($table)->truncate();
 
-                    	echo ". Truncated table " . $table . "\n";
+                    	echo "--Truncated table " . $table . "\n";
                     }
 
                 /**
@@ -116,10 +128,8 @@ class DatabaseSeeder extends Seeder
 	                    echo "----------------------------------\n";
 
 	                    foreach($seeders['main_seeders'] as $seeder){
-	                    	echo "Seeding: " . $seeder;
+	                    	echo "Calling: " . $seeder . "\n";
 	                    	$this->call($seeder);
-
-	                    	
 	                    }
 
 	                    echo "Main tables seeded\n\n";
@@ -133,10 +143,8 @@ class DatabaseSeeder extends Seeder
 	                    echo "----------------------------------\n";
 
 	                    foreach($seeders['pivot_seeders'] as $pivot){
-	                    	echo "Seeding pivot table: " . $pivot;
+	                    	echo "Calling pivot table seeder: " . $pivot . "\n";
 	                    	$this->call($pivot);
-
-	                    	
 	                    }
 
 	                    echo "Pivot tables seeded\n\n";

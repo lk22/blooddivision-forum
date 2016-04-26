@@ -3,6 +3,7 @@
 use Faker\Factory as Faker;
 
 use Illuminate\Database\Seeder;
+use Blooddivision\User;
 
 /**
 * users table seeder
@@ -12,42 +13,47 @@ class UserTableSeeder extends Seeder
 	public function run(){
 
 		$faker = Faker::create();
+		$user = new User;
 
-		echo "---------------------------
-			  |						    |
-			  |						    |
-			  |	Seeding fresh new users |
-			  |							|
-			  |							|
-			  |-------------------------|";
+		$email = $faker->email;
 
-		foreach(range(1, 20) as $index){
-			$name = $faker->name;
+		$password = bcrypt('secret');
 
-			$email = $faker->safeEmail;
+		$active = $faker->randomElement([true, false]);
 
-			foreach(count($name) as $name){
-				echo $name;
-			}
+		// $images = File::files(base_path('/database/seeds/userimages'));
+		
+		$testUsers = [];
 
-			User::create([
-				'name' => $name,
-				'email' => $email,
-				'password' => bcrypt('secret'),
-				'active' => true,
-				'rememberToken' => str_random(10)
+		$testUsers[] = User::create([
+			'name' => "Leokk2200",
+			'email' => "nightskater-220@hotmail.com",
+			'password' => "1",
+			'active' => true
+		]); 
+
+		$testUsers[] = User::create([
+			'name' => "Tardboi",
+			'email' => "stevenkaninnus@hotmail.com",
+			'password' => "2",
+			'active' => true
+		]); 
+
+		$testUsers[] = User::create([
+			'name' => "Kiiltom",
+			'email' => "binder_tom@hotmail.com",
+			'password' => "3",
+			'active' => true
+		]); 
+		
+		foreach(range(1, 60) as $index){
+			$user->create([
+				'name' => $faker->userName,
+				'email' => $faker->safeEmail,
+				'password' => $password,
+				'active' => $faker->randomElement([true, false])
 			]);
 		}
-
-		echo "---------------------------------
-			  |						    	  |
-			  |						    	  |
-			  |	all users seeded successfully |
-			  |							      |
-			  |							      |
-			  |-------------------------------|";
-
-
 	}
 }
 

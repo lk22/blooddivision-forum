@@ -12,7 +12,13 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('posts', function(Blueprint $table) {
+            $table->uuid('id');
+            $table->text('text');
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -22,6 +28,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('posts');
     }
 }

@@ -129,8 +129,29 @@ elixir(function(mix) {
 		    
 		    	mix.copy(
 		    		npm.javaScript.react.react_redux,
-		    		'resources/assets/js/react-redux.min.js'
+		    		'resources/assets/js/vendor/react-redux.min.js'
 		    	);
+
+
+		/**
+		 * mixing all the scripts together
+		 */
+		
+			mix.scripts([
+				// vendors
+					'../../../' + bower.javaScript.jquery,
+					'../../../' + bower.javaScript.bootstrap,
+
+				//react scripts
+					'../../../' + npm.javaScript.react.react,
+					'../../../' + npm.javaScript.react.addons,
+					'../../../' + npm.javaScript.react.bootstrap,
+					'../../../' + npm.javaScript.react.react_dom,
+					'../../../' + npm.javaScript.react.react_dnd_html5,
+					'../../../' + npm.javaScript.react.react_redux
+
+
+			], 'public/js/all.js');
 
 
 });

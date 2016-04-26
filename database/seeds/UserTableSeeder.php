@@ -13,8 +13,6 @@ class UserTableSeeder extends Seeder
 
 		$faker = Faker::create();
 
-		
-
 		echo "---------------------------
 			  |						    |
 			  |						    |
@@ -52,12 +50,5 @@ class UserTableSeeder extends Seeder
 
 	}
 }
-
-
-
-
-
-
-
 
  ?>

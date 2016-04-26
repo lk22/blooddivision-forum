@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTagsTable extends Migration
+class CreateCommentPostTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function(Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            
+        Schema::create('comment_post', function(Blueprint $table) {
+            $table->integer('comment_id')->unsigned();
+            $table->integer('post_id')->unsigned();
+
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -28,6 +27,6 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('comment_post');
     }
 }

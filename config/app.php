@@ -160,6 +160,10 @@ return [
          * external packages
          */
         Spatie\Menu\Laravel\MenuServiceProvider::class,
+        Skovmand\Mailchimp\MailchimpServiceProvider::class,
+
+        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+        Xinax\LaravelGettext\LaravelGettextServiceProvider::class,
 
     ],
 
@@ -211,7 +215,9 @@ return [
          * external packages aliases
          */
         'Menu' => Spatie\Menu\Laravel\MenuFacade::class,
+        'Notification' => Krucas\Notification\Facades\Notification::class,
 
+        'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class
     ],
 
 ];

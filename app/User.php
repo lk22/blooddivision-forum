@@ -4,15 +4,23 @@ namespace Blooddivision;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
+
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class User extends Authenticatable implements SluggableInterface
 {
+
+    use SluggableTrait;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'active', 'avatar'
     ];
 
     /**

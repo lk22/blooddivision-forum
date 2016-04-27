@@ -32,9 +32,15 @@ class ApiController extends Controller
 	}
 
 	public function users(Request $request){
-		if($request->get('count')){
+		if( $request->get('count') ){
 			$users = $this->user->take($request->get('count'))->get();
 		}
+
+		if( $request->get('active') ){
+			$users = $this->user->where('active', $request->get('active'));
+		}
+
+		$users = $this->user->all();
 
 		return response()->json([
 			'message' => 'success',
@@ -43,7 +49,5 @@ class ApiController extends Controller
 			]
 		]);
 	}
-
-
 
 }

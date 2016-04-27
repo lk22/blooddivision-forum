@@ -11,6 +11,34 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+	/**
+	 * API
+	 */
+	
+		Route::group(['prefix' => 'api'], function() {
+
+			/**
+			 * home
+			 */
+				
+				Route::get('/', 'ApiController@api');
+
+			/**
+			 * users
+			 */
+			
+				Route::group(['prefix' => '/users'], function() {
+
+					/**
+					 * all users
+					 */
+					
+						Route::get('all', 'ApiController@users');
+
+				});
+
+		});
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

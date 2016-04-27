@@ -9,9 +9,7 @@
 				'id' 		=> (integer) $user->id,
 				'username' 	=> (string) $user->name,
 				'email' 	=> (string) $user->email,
-				'active'	=> (boolean) $user->active,
-
-				'isguest'	=> $user->isGuest()
+				'active'	=> (boolean) $user->active
 			];
 
 			return $return;

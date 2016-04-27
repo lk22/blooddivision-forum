@@ -8,7 +8,7 @@
 			$return = [];
 
 			foreach($items as $item)
-				$return[] = $this->tranform($item);
+				$return[] = $this->transform($item);
 
 			return $return;
 

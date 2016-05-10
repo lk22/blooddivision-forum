@@ -10,6 +10,8 @@ machine:
     bloodforum.app: 127.0.0.1
 
 dependencies:
+  pre:
+    - cp config/custom.ini ~/.phpenv/versions/$(phpenv global)/etc/conf.d/
   override:
     - sudo apt-get install gettext
     - cd /etc/php5/cli

@@ -4,10 +4,10 @@ machine:
     version: 7.0.2
 
     hosts:
-      bloodforum.app
+      bloodforum.app: 127.0.0.1
 
-    environment:
-      APP_ENV: testing
-      DB_URL: 127.0.0.1
-      DB_name: circle_test
-      DB_USER: ubuntu 
+  dependencies:
+    override:
+      - composer install
+      - vendor/bin/phpunit 
+      

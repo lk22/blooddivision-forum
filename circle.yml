@@ -6,8 +6,8 @@ machine:
     hosts:
       bloodforum.app: 127.0.0.1
 
-  dependencies:
-    override:
-      - composer install
-      - vendor/bin/phpunit 
-      
+dependencies:
+  override:
+    - composer install
+    - vendor/bin/phpunit 
+    

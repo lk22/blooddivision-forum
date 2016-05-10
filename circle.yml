@@ -11,7 +11,7 @@ machine:
 
 dependencies:
   pre:
-    - cp config/custom.ini ~/.phpenv/versions/$(phpenv global)/etc/conf.d/
+    - cp config/custom.ini ~/.phpenv/versions/7.0.2/etc/conf.d/
   override:
     - sudo apt-get install gettext
     - cd /etc/php5/cli

@@ -13,6 +13,6 @@ dependencies:
   override:
     - sudo apt-get install gettext
     - cd /etc/php5/cli
-    - echo extension=php_gettext.dll >> php.ini 
+    - echo "extension=php_gettext.dll" >> php.ini 
     - composer install
     - vendor/bin/phpunit 

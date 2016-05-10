@@ -49,7 +49,7 @@
 			 * Home
 			 */
 							
-				Route::get('/', 'HomeController@index' ,['as' => 'layouts.app']);
+				Route::get('/', ['uses' => 'HomeController@index' , 'as' => 'home.app']);
 
 		});
 

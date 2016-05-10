@@ -164,7 +164,6 @@ return [
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
 
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
-        Xinax\LaravelGettext\LaravelGettextServiceProvider::class,
 
     ],
 

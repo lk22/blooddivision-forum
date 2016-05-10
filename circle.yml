@@ -3,8 +3,8 @@ machine:
   php:
     version: 7.0.2
 
-    hosts:
-      bloodforum.app: 127.0.0.1
+  hosts:
+    bloodforum.app: 127.0.0.1
 
 dependencies:
   override:

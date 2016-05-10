@@ -12,6 +12,6 @@ machine:
 dependencies:
   override:
     - sudo apt-get install gettext
-    - sudo a2enmod gettext.so
+    - sudo a2enmod gettext
     - composer install
     - vendor/bin/phpunit 

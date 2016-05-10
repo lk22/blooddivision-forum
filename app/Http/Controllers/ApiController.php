@@ -9,6 +9,11 @@ use Blooddivision\Http\Requests;
 use Blooddivision\Transformers\UserTransformer;
 
 use Blooddivision\User;
+use Blooddivision\Post;
+use Blooddivision\Thread;
+use Blooddivision\Comment;
+use Blooddivision\Tag;
+use Blooddivision\Like;
 
 /**
  * Blooddivision API Controller
@@ -17,30 +22,27 @@ class ApiController extends Controller
 {
     /**
      * Constructor
-     *
      * @param      User             $user             (description)
      * @param      UserTransformer  $userTransformer  (description)
      */
-	public function __construct(User $user, UserTransformer $userTransformer){
+	public function __construct(User $user){
 		$this->user = $user;
-
-		$this->userTransformer = $userTransformer;
 	}
 
-	public function api(){
-		return "Welcome to Blooddivision API";
-	}
-
-	public function users(Request $request){
-		if( $request->get('count') ){
-			$users = $this->user->take($request->get('count'))->get();
-		}
-
-		if( $request->get('active') ){
-			$users = $this->user->where('active', $request->get('active'));
-		}
+	/**
+	 * fetch users all/count={count}/active={active=true, false}
+	 *
+	 * @param      Request  $request  (description)
+	 *
+	 * @return     JSON
+	 */
+	public function showUsers(Request $request){
 
 		$users = $this->user->all();
+
+		if( $request->get('count') ){
+			$users = $this->user->take( $request->get('count') )->get();
+		}
 
 		return response()->json([
 			'message' => 'success',

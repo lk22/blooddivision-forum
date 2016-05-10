@@ -5,6 +5,10 @@ namespace Blooddivision\Http\Controllers;
 use Blooddivision\Http\Requests;
 use Illuminate\Http\Request;
 
+use Blooddivision\User;
+
+use Blooddivision\Transformers\UserTransformer;
+
 class HomeController extends Controller
 {
     /**
@@ -12,9 +16,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserTransformer $userTransformer)
     {
         $this->middleware('auth');
+
+        $this->userTransformer = $userTransformer;
     }
 
     /**
@@ -24,6 +30,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = User::all();
+
+        $js_variables = [
+            'user' => $this->userTransformer->tranformCollection($user)
+        ];
+        return view('home', compact('user', 'js_variables'));
     }
 }

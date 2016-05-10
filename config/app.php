@@ -161,6 +161,7 @@ return [
          */
         Spatie\Menu\Laravel\MenuServiceProvider::class,
         Skovmand\Mailchimp\MailchimpServiceProvider::class,
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
 
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         Xinax\LaravelGettext\LaravelGettextServiceProvider::class,

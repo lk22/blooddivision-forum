@@ -15,6 +15,7 @@ class CreateThreadPostTable extends Migration
         Schema::create('thread_post', function(Blueprint $table) {
             $table->integer('thread_id')->unsigned();
             $table->integer('post_id')->unsigned();
+            $table->primary(['thread_id', 'post_id']);
 
             $table->timestamps();
         });

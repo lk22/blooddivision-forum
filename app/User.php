@@ -61,4 +61,24 @@ class User extends Authenticatable implements SluggableInterface
             'build_from' => 'name',
             'save_to'    => 'slug'
         );
+
+    /**
+     * Relationships
+     */
+    
+        /**
+         * many posts
+         */
+        
+            public function posts(){
+                return $this->hasMany('Blooddivision\Post');
+            }
+
+        /**
+         * one post
+         */
+        
+            public function post(){
+                return $this->hasOne('Blooddivision\Post');
+            }
 }

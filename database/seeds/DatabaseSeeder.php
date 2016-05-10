@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
 				$seeders = [
 					"main_seeders" => [
 						UserTableSeeder::class,
-						// ThreadTableSeeder::class,
+						ThreadTableSeeder::class,
 						// PostTableSeeder::class,
 						// CommentTableSeeder::class,
 						// LikeTableSeeder::class
@@ -142,9 +142,9 @@ class DatabaseSeeder extends Seeder
 	                    echo "-------->  pivot tables  <--------\n";
 	                    echo "----------------------------------\n";
 
-	                    foreach($seeders['pivot_seeders'] as $pivot){
-	                    	echo "Calling pivot table seeder: " . $pivot . "\n";
-	                    	$this->call($pivot);
+	                    foreach($seeders['pivot_seeders'] as $seeder){
+	                    	echo "Calling pivot table seeder: " . $seeder . "\n";
+	                    	$this->call($seeder);
 	                    }
 
 	                    echo "Pivot tables seeded\n\n";

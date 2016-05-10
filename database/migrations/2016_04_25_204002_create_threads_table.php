@@ -13,7 +13,7 @@ class CreateThreadsTable extends Migration
     public function up()
     {
         Schema::create('threads', function(Blueprint $table) {
-            $table->uuid('id');
+            $table->increments('id');
             $table->string('name');
 
             $table->integer('user_id')->unsigned();

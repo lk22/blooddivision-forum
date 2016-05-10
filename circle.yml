@@ -1,0 +1,13 @@
+machine:
+
+  php:
+    version: 7.0.2
+
+    hosts:
+      bloodforum.app
+
+    environment:
+      APP_ENV: testing
+      DB_URL: 127.0.0.1
+      DB_name: circle_test
+      DB_USER: ubuntu

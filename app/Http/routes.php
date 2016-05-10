@@ -18,12 +18,6 @@
 		Route::group(['prefix' => 'api'], function() {
 
 			/**
-			 * home
-			 */
-				
-				Route::get('/', 'ApiController@api');
-
-			/**
 			 * users
 			 */
 			
@@ -33,12 +27,29 @@
 					 * all users
 					 */
 					
-						Route::get('all', 'ApiController@users');
+						Route::get('/', 'ApiController@showUsers');
 
 				});
 
 		});
 
-Route::auth();
+	/**
+	 * Web
+	 */
+	
+		Route::group(['prefix' => '/', 'middleware' => 'web'], function(){
 
-Route::get('/home', 'HomeController@index');
+			/**
+			 * Authentication routes
+			 */
+			
+				Route::auth();
+
+			/**
+			 * Home
+			 */
+							
+				Route::get('/', 'HomeController@index' ,['as' => 'layouts.app']);
+
+		});
+

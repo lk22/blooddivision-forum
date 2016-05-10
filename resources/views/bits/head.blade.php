@@ -25,13 +25,13 @@
 		'token' 			=> csrf_token(),
 		'user'				=> app()->make('Blooddivision\Tranformers\UserTransformer')->tranform(auth()->user()),
 		'environment'		=> app()->environment(),
-		'locale' 			=> LaravelGettext::getLocale(),
-		'lang' 				=> LaravelGettext::getLocaleLanguage(),
-		'api' 				=> LaravelLocalization::getLocalizedURL(null, route('api')) . '/',
+		// 'locale' 			=> LaravelGettext::getLocale(),
+		// 'lang' 				=> LaravelGettext::getLocaleLanguage(),
+		// 'api' 				=> LaravelLocalization::getLocalizedURL(null, route('api')) . '/',
 	];
 
 	$defaut_js_variables['user']['email'] = Auth::user()->email;
-	// $defaut_js_variables['user']['slug'] = Auth::user()->slug;
+	$defaut_js_variables['user']['slug'] = Auth::user()->slug;
 	 
 	$js_variables = array_merge($default_js_variables, (isset($js_variables)) ? $js_variables : []);
 	

@@ -11,5 +11,6 @@ machine:
 
 dependencies:
   override:
+    - sudo apt-get isntall gettext
     - composer install
     - vendor/bin/phpunit 

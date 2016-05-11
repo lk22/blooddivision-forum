@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
 					"main_seeders" => [
 						UserTableSeeder::class,
 						ThreadTableSeeder::class,
-						// PostTableSeeder::class,
+						PostTableSeeder::class,
 						// CommentTableSeeder::class,
 						// LikeTableSeeder::class
 					],

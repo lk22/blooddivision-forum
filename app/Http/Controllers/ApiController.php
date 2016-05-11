@@ -25,16 +25,21 @@ class ApiController extends Controller
      * @param      User             $user             (description)
      * @param      UserTransformer  $userTransformer  (description)
      */
-	public function __construct(User $user){
+	public function __construct(User $user, Thread $thread, Post $post, Comment $comment, Tag $tag, Like $like){
 		$this->user = $user;
+		$this->thread = $thread;
+		$this->post = $post;
+		$this->comment = $comment;
+		$this->tag = $tag;
+		$this->like = $like;
 	}
 
 	/**
-	 * fetch users all/count={count}/active={active=true, false}
+	 * user
 	 *
-	 * @param      Request  $request  (description)
+	 * @param Request  $request
 	 *
-	 * @return     JSON
+	 * @return JSON
 	 */
 	public function showUsers(Request $request){
 
@@ -51,5 +56,17 @@ class ApiController extends Controller
 			]
 		]);
 	}
+
+	public function showThreads(Request $request){
+
+		$threads = ($request->get('forum')) ? $this->thread->where('forum_id', $forum->id)->get() : $this->thread->all(); 
+
+		return response()->json([
+			'message' => 'success',
+			'threads' => [
+				app()->make('Blooddivision\Transformers\ThreadTransformer')->transformCollection($threads)
+			]
+		]);
+	} 
 
 }

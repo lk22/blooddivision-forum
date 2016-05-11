@@ -31,6 +31,16 @@
 
 				});
 
+				Route::group(['prefix' => 'threads'], function() {
+
+					/**
+					 * all threads
+					 */
+					
+						Route::get('/', 'ApiController@showThreads');
+
+				});
+
 		});
 
 	/**
@@ -40,16 +50,22 @@
 		Route::group(['prefix' => '/', 'middleware' => 'web'], function(){
 
 			/**
+			 * Home
+			 */
+							
+				Route::get('/', ['uses' => 'HomeController@index' , 'as' => 'home']);
+
+			/**
 			 * Authentication routes
 			 */
 			
 				Route::auth();
 
-			/**
-			 * Home
-			 */
-							
-				Route::get('/', ['uses' => 'HomeController@index' , 'as' => 'home.app']);
+			
+
+				Route::get('/modules', function() {
+					return phpinfo();
+				});
 
 		});
 

@@ -29,9 +29,9 @@ class ThreadTableSeeder extends Seeder
          * @var $thread Thread
          */
         $thread = new Thread;
-
+        
         /**
-         * lets make faker decide if null or current time 
+         * lets make faker decide if null or current time
          */
         $thrash = $faker->randomElement([
         	null,

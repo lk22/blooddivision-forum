@@ -91,9 +91,9 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', 'nrKXPYr2QA7GHUnWpqmXqlp280uCeURZxA1yGdZ1RVQ='),
+    'key' => env('APP_KEY'),
 
-    'cipher' => 'nrKXPYr2QA7GHUnWpqmXqlp280uCeURZxA1yGdZ1RVQ=',
+    'cipher' => 'nrKXPYr2QA7GHUnWpqmXqlp280uCeURZxA1yGdZ1RVQ',
 
     /*
     |--------------------------------------------------------------------------

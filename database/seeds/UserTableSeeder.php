@@ -20,8 +20,6 @@ class UserTableSeeder extends Seeder
 		$password = bcrypt('secret');
 
 		$active = $faker->randomElement([true, false]);
-
-		// $images = File::files(base_path('/database/seeds/userimages'));
 		
 		$testUsers = [];
 
@@ -46,7 +44,7 @@ class UserTableSeeder extends Seeder
 			'active' => true
 		]); 
 		
-		foreach(range(1, 60) as $index){
+		foreach(range(1, 57) as $index){
 			$user->create([
 				'name' => $faker->userName,
 				'email' => $faker->safeEmail,

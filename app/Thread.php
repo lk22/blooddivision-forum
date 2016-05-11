@@ -149,8 +149,4 @@ class Thread extends Model implements SluggableInterface
                   return $query->orderBy( $field, $order );
                }
 
-            /**
-             * 
-             */
-
 }

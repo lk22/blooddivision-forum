@@ -11,5 +11,5 @@ machine:
 
 test:
   override:
-   - tests/*.php
+   - tests/
 

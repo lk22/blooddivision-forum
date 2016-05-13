@@ -6,9 +6,6 @@ machine:
   php:
     version: 7.0.2
 
-  pre:
-    - echo "extension=gettext.so" > ~/.phpenv/versions/$(phpenv global)/etc/conf.d/
-
   hosts:
     bloodforum.app: 127.0.0.1
 

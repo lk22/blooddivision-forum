@@ -12,10 +12,7 @@ machine:
   hosts:
     bloodforum.app: 127.0.0.1
 
-dependencies:
+test:
   override:
-    - sudo apt-get install gettext
-    - sudo phpenmod gettext
-    - composer install
-    - vendor/bin/phpunit 
+   - tests/*.php
 

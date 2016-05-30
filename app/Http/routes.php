@@ -10,50 +10,25 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 	/**
 	 * API
 	 */
 	
-		Route::group(['prefix' => 'api'], function() {
-
-			/**
-			 * users
-			 */
-			
-				Route::group(['prefix' => '/users'], function() {
-
-					/**
-					 * all users
-					 */
-					
-						Route::get('/', 'ApiController@showUsers');
-
-				});
-
-				Route::group(['prefix' => 'threads'], function() {
-
-					/**
-					 * all threads
-					 */
-					
-						Route::get('/', 'ApiController@showThreads');
-
-				});
-
-		});
+		include('api-routes.php');
 
 	/**
 	 * Web
 	 */
 	
+	
+	/**
+	 * Home
+	 */
+					
+		Route::get('/', ['uses' => 'HomeController@index' , 'as' => 'home']);
+	
 		Route::group(['prefix' => '/', 'middleware' => 'web'], function(){
 
-			/**
-			 * Home
-			 */
-							
-				Route::get('/', ['uses' => 'HomeController@index' , 'as' => 'home']);
 
 			/**
 			 * Authentication routes

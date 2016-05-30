@@ -35,7 +35,7 @@ class ApiController extends Controller
 	}
 
 	/**
-	 * user
+	 * all users
 	 *
 	 * @param Request  $request
 	 *
@@ -57,6 +57,93 @@ class ApiController extends Controller
 		]);
 	}
 
+	/**
+	 * Authenticated user
+	 *
+	 * @param      Request  $request  (description)
+	 *
+	 * @return     <type>   ( description_of_the_return_value )
+	 */
+	public function showAuth(Request $request){
+
+		$user = auth()->user;
+
+		return response()->json([
+			'message' => 'success',
+			'user' => app()->make('Blooddivision\Transformers\UserTransformer')->transform($user)
+		]);
+
+	}
+
+	/**
+	 * Show Specific users id
+	 *
+	 * @param      Request  $request  (description)
+	 *
+	 * @return     <type>   ( description_of_the_return_value )
+	 */
+	public function showUserWhereId($id){
+		$user = $this->user->where('id', $id)->take(1)->get();
+
+		return response()->json([
+			'status' => 'ok!',
+			'user_id' => $user->id
+		]);
+	}
+
+	/**
+	 * Show Specific users name
+	 *
+	 * @param      Request  $request  (description)
+	 *
+	 * @return     <type>   ( description_of_the_return_value )
+	 */
+	public function showUserWhereUsername($username){
+		$user = $this->user->where('name', $username)->get();
+		return response()->json([
+			'status' => 'ok!',
+			'username' => $user->name
+		]);
+	}
+
+	/**
+	 * Show Specific users email
+	 *
+	 * @param      Request  $request  (description)
+	 *
+	 * @return     <type>   ( description_of_the_return_value )
+	 */
+	public function showUserWhereEmail(Request $request, $email){
+		$user = $this->user->where('email', $email)->get();
+		return response()->json([
+			'status' => 'ok!',
+			'user_id' => $user->email
+		]);
+	}
+
+	/**
+	 * Show Specific users active
+	 *
+	 * @param      Request  $request  (description)
+	 *
+	 * @return     <type>   ( description_of_the_return_value )
+	 */
+	public function showUserWhereActive(Request $request, $active){
+		$user = $this->user->where('active', $active)->get();
+		return response()->json([
+			'status' => 'ok!',
+			'user_id' => $user->active
+		]);
+	}
+
+
+	/**
+	 * All threads
+	 *
+	 * @param      Request  $request  (description)
+	 *
+	 * @return     <type>   ( description_of_the_return_value )
+	 */
 	public function showThreads(Request $request){
 
 		$threads = ($request->get('forum')) ? $this->thread->where('forum_id', $forum->id)->get() : $this->thread->all(); 

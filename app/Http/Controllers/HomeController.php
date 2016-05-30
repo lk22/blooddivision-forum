@@ -35,6 +35,7 @@ class HomeController extends Controller
         $js_variables = [
             'user' => $this->userTransformer->tranformCollection($user)
         ];
+        
         return view('home', compact('user', 'js_variables'));
     }
 }

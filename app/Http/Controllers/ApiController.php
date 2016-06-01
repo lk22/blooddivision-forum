@@ -102,7 +102,7 @@ class ApiController extends Controller
 		$user = $this->user->where('name', $username)->get();
 		return response()->json([
 			'status' => 'ok!',
-			'username' => $user->name
+			'username' => $username
 		]);
 	}
 
@@ -132,7 +132,7 @@ class ApiController extends Controller
 		$user = $this->user->where('active', $active)->get();
 		return response()->json([
 			'status' => 'ok!',
-			'user_id' => $user->active
+			'active' => $user->active
 		]);
 	}
 
